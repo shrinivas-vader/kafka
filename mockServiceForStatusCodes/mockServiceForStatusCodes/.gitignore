@@ -34,4 +34,5 @@ build/
 
 #
 .newrelic.yml
+newrelic.yml
 logs/
