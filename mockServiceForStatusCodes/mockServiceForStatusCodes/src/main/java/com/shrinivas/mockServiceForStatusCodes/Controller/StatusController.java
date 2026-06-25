@@ -17,6 +17,7 @@ public class StatusController {
 
 	@GetMapping("/200")
 	public ResponseEntity<String> Get200Controller(){
+		System.out.println("200 From Controller");
 		return ResponseEntity.status(200).body("200 Status Code");
 	}
 	
