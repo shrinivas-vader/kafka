@@ -4,8 +4,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shrinivas.mockServiceForStatusCodes.service.StatusClient;
+
 @RestController
 public class StatusController {
+	
+	private StatusClient statusClient;
+	
+	public StatusController(StatusClient statusClient) {
+		this.statusClient = statusClient;
+	}
 
 	@GetMapping("/200")
 	public ResponseEntity<String> Get200Controller(){
@@ -27,4 +35,10 @@ public class StatusController {
 	public ResponseEntity<String> Get503Controller(){
 		return ResponseEntity.status(503).body("503 Status Code");
 	}
+	
+	@GetMapping("/testCircuitBreaker")
+	public String test() {
+
+        return statusClient.callStatus();
+    }
 }
